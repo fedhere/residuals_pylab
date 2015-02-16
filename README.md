@@ -1,3 +1,5 @@
+.. image:: https://zenodo.org/badge/10115/fedhere/residuals_pylab.svg   :target: http://dx.doi.org/10.5281/zenodo.15419
+
 self explainatory: 
 
 it makes a classical residual plot, with the residuals at the bottm and the data in the top panel. 
