@@ -1,4 +1,4 @@
-.. image:: https://zenodo.org/badge/10115/fedhere/residuals_pylab.svg   :target: http://dx.doi.org/10.5281/zenodo.15419
+<a href="http://dx.doi.org/10.5281/zenodo.15419"><img src="https://zenodo.org/badge/10115/fedhere/residuals_pylab.svg"><a>
 
 self explainatory: 
 
@@ -42,3 +42,4 @@ plotwresids([x,x1],[y,y1],[res,res1],err=[None,np.sqrt(np.abs(np.sin(x1)))],xlab
 pl.show()
 
 
+cite through DOI (see top)
