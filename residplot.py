@@ -15,8 +15,8 @@ def plotwresids(x,y,res,err=None,xlabel="",ylabel="",reslabel="residuals",xlim=N
     else:
         fig=pl.figure()
     mpl.rcParams['font.size'] = 18.
-    mpl.rcParams['font.family'] = 'Times New Roman'
-    #    mpl.rcParams['font.serif'] = 'Times'                                                                                                       
+    mpl.rcParams['font.family'] = 'serif'
+    mpl.rcParams['font.serif'] = 'Times New Roman'                                                                                                       
     mpl.rcParams['axes.labelsize'] = 18
     mpl.rcParams['xtick.labelsize'] = 18.
     mpl.rcParams['ytick.labelsize'] = 18.
