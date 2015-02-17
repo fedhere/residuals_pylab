@@ -41,5 +41,6 @@ plotwresids([x,x1],[y,y1],[res,res1],err=[None,np.sqrt(np.abs(np.sin(x1)))],xlab
 
 pl.show()
 
+![alt tag](https://github.com/fedhere/residuals_pylab/blob/master/example1.png)
 
 cite through DOI (see top)
