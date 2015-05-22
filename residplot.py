@@ -1,4 +1,3 @@
-import os
 import matplotlib.ticker as mpltk
 
 import matplotlib as mpl
@@ -54,14 +53,14 @@ def plotwresids(x,y,res,xerr=None,yerr=None,reserr=None,xlabel="",ylabel="",resl
         if xerr:
             yerr=[[xerr]]
     elif not isinstance(x[0], list) and not isinstance(x[0], np.ndarray ):
-            x=  [x]
-            y=  [y]
-            res=[res]
-            scatter=[scatter]
-            if xerr:
-                xerr=[xerr]
-            if yerr:
-                yerr=[yerr]
+        x=  [x]
+        y=  [y]
+        res=[res]
+        scatter=[scatter]
+        if xerr:
+            xerr=[xerr]
+        if yerr:
+            yerr=[yerr]
 
     if len(alpha)<len(x):
         alpha=alpha*len(x)
@@ -76,7 +75,9 @@ def plotwresids(x,y,res,xerr=None,yerr=None,reserr=None,xlabel="",ylabel="",resl
             label=legend
         elif ( isinstance(legend, np.ndarray ) or isinstance(legend, list)):
             try: label=legend[i]
-            except:label=''                 
+            except:
+                label=''                 
+                pass
 
         if yerr and not (yerr[i]==None):
             if xerr and not (xerr[i]==None):
@@ -102,13 +103,13 @@ def plotwresids(x,y,res,xerr=None,yerr=None,reserr=None,xlabel="",ylabel="",resl
         if LIVE:
             pl.draw()
     
-        if 1: #try: 
-            res[i].all()==None
+        try: 
+            res[i].all()
             if reserr and not (reserr[i]==None):
                 axres.errorbar(x[i],res[i],yerr=reserr[i],color=color[i],alpha=alpha[i],fmt='.', marker=marker[i], label=legend)
             axres.scatter(x[i],res[i],20,color=color[i],alpha=alpha[i],label=legend)
-        #except:
-        #    pass
+        except:
+            pass
         if legend:
             ax1.legend(fontsize=12, loc=loc)
     
