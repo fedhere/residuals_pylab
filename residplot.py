@@ -1,8 +1,6 @@
-import sys,os
+import os
 import matplotlib.ticker as mpltk
 
-import matplotlib.gridspec as gridspec
-from mpl_toolkits.axes_grid1 import make_axes_locatable
 import matplotlib as mpl
 import pylabsetup
 
@@ -21,9 +19,6 @@ def plotwresids(x,y,res,xerr=None,yerr=None,reserr=None,xlabel="",ylabel="",resl
     mpl.rcParams['axes.labelsize'] = 18
     mpl.rcParams['xtick.labelsize'] = 18.
     mpl.rcParams['ytick.labelsize'] = 18.
-    majorLocatorx   = mpltk.MultipleLocator(1.0)
-    majorFormattery = mpltk.FormatStrFormatter('%d')
-    majorFormatterx = mpltk.FormatStrFormatter('%d')
     majorFormatterresy = mpltk.FormatStrFormatter('%.1f')    
     top_offset = .07
     left_offset = .15
@@ -100,6 +95,10 @@ def plotwresids(x,y,res,xerr=None,yerr=None,reserr=None,xlabel="",ylabel="",resl
             ax1.scatter(x[i],y[i],color=color[i],alpha=alpha[i], marker=marker[i], label=label)
         else:
             ax1.plot(x[i],y[i],color=color[i],alpha=alpha[i], marker=marker[i], label=label) 
+        if xlim:
+            ax1.set_xlim(xlim)
+        if ylim:
+            ax1.set_xlim(ylim)
         if LIVE:
             pl.draw()
     
