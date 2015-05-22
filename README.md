@@ -25,11 +25,11 @@ from residplot import plotwresids
 
 x=np.random.rand(100)*10
 
-y=np.sin(x)+0.3*(np.random.rand(100)-0.5)*np.sqrt(x)
+y=np.sin(x)+0.3*(np.random.rand(100)-0.5)\*np.sqrt(x)
 
 x1=np.random.rand(100)*10
 
-y1=np.sin(x1)+(np.random.rand(100)-0.5)*np.sqrt(x1)
+y1=np.sin(x1)+(np.random.rand(100)-0.5)\*np.sqrt(x1)
 
 res=(y-np.sin(x))
 
