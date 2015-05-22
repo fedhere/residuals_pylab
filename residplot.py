@@ -1,5 +1,5 @@
 import sys,os
-from matplotlib.ticker import *
+import matplotlib.ticker as mpltk
 
 import matplotlib.gridspec as gridspec
 from mpl_toolkits.axes_grid1 import make_axes_locatable
@@ -21,10 +21,10 @@ def plotwresids(x,y,res,xerr=None,yerr=None,reserr=None,xlabel="",ylabel="",resl
     mpl.rcParams['axes.labelsize'] = 18
     mpl.rcParams['xtick.labelsize'] = 18.
     mpl.rcParams['ytick.labelsize'] = 18.
-    majorLocatorx   = MultipleLocator(1.0)
-    majorFormattery = FormatStrFormatter('%d')
-    majorFormatterx = FormatStrFormatter('%d')
-    majorFormatterresy = FormatStrFormatter('%.1f')    
+    majorLocatorx   = mpltk.MultipleLocator(1.0)
+    majorFormattery = mpltk.FormatStrFormatter('%d')
+    majorFormatterx = mpltk.FormatStrFormatter('%d')
+    majorFormatterresy = mpltk.FormatStrFormatter('%.1f')    
     top_offset = .07
     left_offset = .15
     right_offset = .2
@@ -113,7 +113,7 @@ def plotwresids(x,y,res,xerr=None,yerr=None,reserr=None,xlabel="",ylabel="",resl
         if legend:
             ax1.legend(fontsize=12, loc=loc)
     
-    majorLocatory   = MultipleLocator((axres.get_ylim()[1]-axres.get_ylim()[0])/3)  
+    majorLocatory   = mpltk.MultipleLocator((axres.get_ylim()[1]-axres.get_ylim()[0])/3)  
     axres.yaxis.set_major_locator(majorLocatory)
     axres.set_xlim(ax1.get_xlim()[0],ax1.get_xlim()[1])
     axres.plot([axres.get_xlim()[0],axres.get_xlim()[1]],[0,0],'k--')
