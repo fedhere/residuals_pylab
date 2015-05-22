@@ -4,9 +4,10 @@ from matplotlib.ticker import *
 import matplotlib.gridspec as gridspec
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 import matplotlib as mpl
+import pylabsetup
 
 import pylab as pl
-def plotwresids(x,y,res,err=None,xlabel="",ylabel="",reslabel="residuals",xlim=None,ylim=None,color=['k'],alpha=[1], marker=['o'], scatter=True,LIVE=False, fig=None, legend=None):
+def plotwresids(x,y,res,xerr=None,yerr=None,reserr=None,xlabel="",ylabel="",reslabel="residuals",xlim=None,ylim=None,color=['k'],alpha=[1], marker=['o'], scatter=True,LIVE=False, fig=None, legend=None, loc=1):
 
     if LIVE:
         pl.ion()
@@ -53,15 +54,19 @@ def plotwresids(x,y,res,err=None,xlabel="",ylabel="",reslabel="residuals",xlim=N
         y=  [[y]]
         res=[[res]]
         scatter=[[scatter]]
-        if err:
-            err=[[err]]
+        if yerr:
+            yerr=[[yerr]]
+        if xerr:
+            yerr=[[xerr]]
     elif not isinstance(x[0], list) and not isinstance(x[0], np.ndarray ):
             x=  [x]
             y=  [y]
             res=[res]
             scatter=[scatter]
-            if err:
-                err=[err]
+            if xerr:
+                xerr=[xerr]
+            if yerr:
+                yerr=[yerr]
 
     if len(alpha)<len(x):
         alpha=alpha*len(x)
@@ -70,7 +75,6 @@ def plotwresids(x,y,res,err=None,xlabel="",ylabel="",reslabel="residuals",xlim=N
     if len(marker)<len(x):
         marker=marker*len(x)
         
-    print x,len(x)
     for i in range(len(x)):
         label=''
         if isinstance(legend,str):
@@ -79,11 +83,18 @@ def plotwresids(x,y,res,err=None,xlabel="",ylabel="",reslabel="residuals",xlim=N
             try: label=legend[i]
             except:label=''                 
 
-        if err and not (err[i]==None):
-            if scatter[i]:
-                   ax1.errorbar(x[i],y[i],yerr=err[i],color=color[i],alpha=alpha[i], marker=marker[i], fmt='.', label=label)            
+        if yerr and not (yerr[i]==None):
+            if xerr and not (xerr[i]==None):
+                if scatter[i]:
+                    ax1.errorbar(x[i],y[i],xerr=xerr[i],yerr=yerr[i],color=color[i],alpha=alpha[i], marker=marker[i], fmt='.', label=label)            
+                else:
+                    ax1.errorbar(x[i],y[i],xerr=xerr[i],yerr=yerr[i],color=color[i],alpha=alpha[i], marker=marker[i], label=label)                            
+
             else:
-                   ax1.errorbar(x[i],y[i],yerr=err[i],color=color[i],alpha=alpha[i], marker=marker[i], label=label)                            
+                if scatter[i]:
+                    ax1.errorbar(x[i],y[i],yerr=yerr[i],color=color[i],alpha=alpha[i], marker=marker[i], fmt='.', label=label)            
+                else:
+                    ax1.errorbar(x[i],y[i],yerr=yerr[i],color=color[i],alpha=alpha[i], marker=marker[i], label=label)                            
                                                                 
         elif scatter:
             ax1.scatter(x[i],y[i],color=color[i],alpha=alpha[i], marker=marker[i], label=label)
@@ -92,13 +103,15 @@ def plotwresids(x,y,res,err=None,xlabel="",ylabel="",reslabel="residuals",xlim=N
         if LIVE:
             pl.draw()
     
-        try: 
+        if 1: #try: 
             res[i].all()==None
-            axres.scatter(x[i],res[i],color=color[i],alpha=alpha[i], label=legend)
-        except:
-            pass
+            if reserr and not (reserr[i]==None):
+                axres.errorbar(x[i],res[i],yerr=reserr[i],color=color[i],alpha=alpha[i],fmt='.', marker=marker[i], label=legend)
+            axres.scatter(x[i],res[i],20,color=color[i],alpha=alpha[i],label=legend)
+        #except:
+        #    pass
         if legend:
-            ax1.legend(fontsize=12)
+            ax1.legend(fontsize=12, loc=loc)
     
     majorLocatory   = MultipleLocator((axres.get_ylim()[1]-axres.get_ylim()[0])/3)  
     axres.yaxis.set_major_locator(majorLocatory)
