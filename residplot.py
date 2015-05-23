@@ -28,7 +28,8 @@ def plotwresids(x,y,res,xerr=None,yerr=None,reserr=None,xlabel="",ylabel="",resl
     #ax_height = (1-top_offset - bottom_offset - hgap)/2
     
     left, width = 0.1, 0.65
-    #bottom, height = 0.1, 0.65
+    bottom = 0.1 
+    height = 0.65
     bottom_h = left_h = left + width 
     
     rect_scatter = [left, bottom+0.2, width, height]
