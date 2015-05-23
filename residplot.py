@@ -78,8 +78,8 @@ def plotwresids(x,y,res,xerr=None,yerr=None,reserr=None,xlabel="",ylabel="",resl
             except IndexError:
                 label=''                 
 
-        if yerr and yerr[i] in not None:
-            if xerr and xerr[i is not None):
+        if yerr and yerr[i] is not None:
+            if xerr and xerr[i] is not None:
                 if scatter[i]:
                     ax1.errorbar(x[i],y[i],xerr=xerr[i],yerr=yerr[i],color=color[i],alpha=alpha[i], marker=marker[i], fmt='.', label=label)            
                 else:
