@@ -24,8 +24,8 @@ def plotwresids(x,y,res,xerr=None,yerr=None,reserr=None,xlabel="",ylabel="",resl
     right_offset = .2
     bottom_offset = .13
     hgap = 0
-    ax_width = 1-left_offset - right_offset
-    ax_height = (1-top_offset - bottom_offset - hgap)/2
+    #ax_width = 1-left_offset - right_offset
+    #ax_height = (1-top_offset - bottom_offset - hgap)/2
     
     left, width = 0.1, 0.65
     bottom, height = 0.1, 0.65
@@ -33,7 +33,7 @@ def plotwresids(x,y,res,xerr=None,yerr=None,reserr=None,xlabel="",ylabel="",resl
     
     rect_scatter = [left, bottom+0.2, width, height]
     rect_histx = [left, bottom, width, 0.2]
-    rect_histy = [left_h, bottom, 0.2, height]
+    #rect_histy = [left_h, bottom, 0.2, height]
     
     pl.subplots_adjust(hspace=0.,wspace=0.1 )
     ax1 = pl.axes(rect_scatter)          
@@ -75,12 +75,11 @@ def plotwresids(x,y,res,xerr=None,yerr=None,reserr=None,xlabel="",ylabel="",resl
             label=legend
         elif ( isinstance(legend, np.ndarray ) or isinstance(legend, list)):
             try: label=legend[i]
-            except:
+            except IndexError:
                 label=''                 
-                pass
 
-        if yerr and not (yerr[i]==None):
-            if xerr and not (xerr[i]==None):
+        if yerr and yerr[i] in not None:
+            if xerr and xerr[i is not None):
                 if scatter[i]:
                     ax1.errorbar(x[i],y[i],xerr=xerr[i],yerr=yerr[i],color=color[i],alpha=alpha[i], marker=marker[i], fmt='.', label=label)            
                 else:
@@ -108,7 +107,7 @@ def plotwresids(x,y,res,xerr=None,yerr=None,reserr=None,xlabel="",ylabel="",resl
             if reserr and not (reserr[i]==None):
                 axres.errorbar(x[i],res[i],yerr=reserr[i],color=color[i],alpha=alpha[i],fmt='.', marker=marker[i], label=legend)
             axres.scatter(x[i],res[i],20,color=color[i],alpha=alpha[i],label=legend)
-        except:
+        except IndexError:
             pass
         if legend:
             ax1.legend(fontsize=12, loc=loc)
