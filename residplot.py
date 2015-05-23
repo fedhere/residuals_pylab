@@ -19,16 +19,16 @@ def plotwresids(x,y,res,xerr=None,yerr=None,reserr=None,xlabel="",ylabel="",resl
     mpl.rcParams['xtick.labelsize'] = 18.
     mpl.rcParams['ytick.labelsize'] = 18.
     majorFormatterresy = mpltk.FormatStrFormatter('%.1f')    
-    top_offset = .07
-    left_offset = .15
-    right_offset = .2
-    bottom_offset = .13
-    hgap = 0
+    #top_offset = .07
+    #left_offset = .15
+    #right_offset = .2
+    #bottom_offset = .13
+    #hgap = 0
     #ax_width = 1-left_offset - right_offset
     #ax_height = (1-top_offset - bottom_offset - hgap)/2
     
     left, width = 0.1, 0.65
-    bottom, height = 0.1, 0.65
+    #bottom, height = 0.1, 0.65
     bottom_h = left_h = left + width 
     
     rect_scatter = [left, bottom+0.2, width, height]
