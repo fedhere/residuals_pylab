@@ -30,7 +30,7 @@ def plotwresids(x,y,res,xerr=None,yerr=None,reserr=None,xlabel="",ylabel="",resl
     left, width = 0.1, 0.65
     bottom = 0.1 
     height = 0.65
-    bottom_h = left_h = left + width 
+    #bottom_h = left_h = left + width 
     
     rect_scatter = [left, bottom+0.2, width, height]
     rect_histx = [left, bottom, width, 0.2]
