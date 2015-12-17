@@ -6,7 +6,7 @@ import numpy as np
 import pylab as pl
 
 def plotwresids(x, y, res, xerr=None, yerr=None, reserr=None,\
-                xlabel="", ylabel="", reslabel="residuals", xlim=None, ylim=None,\
+                xlabel=" ", ylabel=" ", reslabel="residuals", xlim=None, ylim=None,\
                 color=['k'], alpha=[1], marker=['o'], scatter=True, \
                 LIVE=False, fig=None, legend=None, loc=1):
 
