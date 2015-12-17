@@ -15,29 +15,24 @@ try it as follows
 
 here is the code:
 
- $ import numpy as np
+```
 
- $ import pylab as pl
+import numpy as np
+import pylab as pl
 
- $ from residplot import plotwresids
+from residplot import plotwresids
+x = np.random.rand(100) * 10
+y = np.sin(x) + 0.3 * (np.random.rand(100) - 0.5) * np.sqrt(x)
+x1 = np.random.rand(100) * 10
+y1 = np.sin(x1) + (np.random.rand(100) - 0.5) * np.sqrt(x1)
 
- $ x=np.random.rand(100)*10
+res = (y - np.sin(x))
+res1 = (y1 - np.sin(x1))
 
- $ y=np.sin(x)+0.3*(np.random.rand(100)-0.5) * np.sqrt(x)
+plotwresids(x, y, res, xlabel="fake data", ylabel="sin-ish", legend="made up stuff")
+plotwresids([x, x1], [y, y1], [res, res1], yerr=[None, np.sqrt(np.abs(np.sin(x1)))], xlabel= "fake\  data", ylabel="sin-ish", scatter=[True, True], color=['SteelBlue', 'DarkOrange'], legend=["madeup stuff", "more madeup stuff"])
 
- $ x1=np.random.rand(100)*10
-
- $ y1=np.sin(x1)+(np.random.rand(100)-0.5) * np.sqrt(x1)
-
- $ res=(y-np.sin(x))
-
- $ res1=(y1-np.sin(x1))
-
- $ plotwresids(x,y,res,xlabel= "fake data",ylabel="sin-ish", legend="made up stuff")
-
- $ plotwresids([x,x1],[y,y1],[res,res1],yerr=[None,np.sqrt(np.abs(np.sin(x1)))],xlabel= "fake data",ylabel="sin-ish",scatter=[True,True], color=['SteelBlue','DarkOrange'], legend=["madeup stuff","more madeup stuff"])
-
- $ pl.show()
+pl.show()
 
 ![alt tag](https://github.com/fedhere/residuals_pylab/blob/master/example1.png)
 
