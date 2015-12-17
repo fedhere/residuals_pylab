@@ -2,14 +2,18 @@ import matplotlib.ticker as mpltk
 
 import matplotlib as mpl
 import pylabsetup
-
+import numpy as np
 import pylab as pl
-def plotwresids(x,y,res,xerr=None,yerr=None,reserr=None,xlabel="",ylabel="",reslabel="residuals",xlim=None,ylim=None,color=['k'],alpha=[1], marker=['o'], scatter=True,LIVE=False, fig=None, legend=None, loc=1):
+
+def plotwresids(x, y, res, xerr=None, yerr=None, reserr=None,\
+                xlabel="", ylabel="", reslabel="residuals", xlim=None, ylim=None,\
+                color=['k'], alpha=[1], marker=['o'], scatter=True, \
+                LIVE=False, fig=None, legend=None, loc=1):
 
     if LIVE:
         pl.ion()
-    if not (fig==None):
-        fig=pl.figure(fig)
+    if not (fig == None):
+        fig = pl.figure(fig)
     else:
         fig=pl.figure()
     mpl.rcParams['font.size'] = 18.
@@ -43,7 +47,7 @@ def plotwresids(x,y,res,xerr=None,yerr=None,reserr=None,xlabel="",ylabel="",resl
     axres.minorticks_on()    
     pl.setp(ax1.get_xticklabels(),
             visible=False)    
-    import numpy as np
+
     if not isinstance(x, list) and not isinstance(x, np.ndarray):
         x=  [[x]]
         y=  [[y]]
