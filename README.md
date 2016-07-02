@@ -1,4 +1,5 @@
 <a href="http://dx.doi.org/10.5281/zenodo.15419"><img src="https://zenodo.org/badge/10115/fedhere/residuals_pylab.svg"><a>
+[![Code Health](https://landscape.io/github/fedhere/residuals_pylab/master/landscape.svg?style=flat)](https://landscape.io/github/fedhere/residuals_pylab/master)
 
 it makes a classical residual plot, with the residuals at the bottm and the data in the top panel. 
 each plot can be scatter plot, line plot and the data can be errorbars
