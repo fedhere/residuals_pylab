@@ -1,13 +1,12 @@
 import matplotlib.ticker as mpltk
-
 import matplotlib as mpl
+import pylab as pl
 import pylabsetup
 import numpy as np
 
-import pylab as pl
-
 pylabsetup.run_setup()
 pl.close()
+
 
 def plotwresids(x, y, res, xerr=None, yerr=None, reserr=None, xlabel="",
                 ylabel="", reslabel="residuals", xlim=None, ylim=None,
@@ -27,8 +26,6 @@ def plotwresids(x, y, res, xerr=None, yerr=None, reserr=None, xlabel="",
     mpl.rcParams['xtick.labelsize'] = 18.
     mpl.rcParams['ytick.labelsize'] = 18.
     majorformatterresy = mpltk.FormatStrFormatter('%.1f')
-
-    
     #top_offset = .07
     #left_offset = .15
     #right_offset = .2
@@ -36,7 +33,6 @@ def plotwresids(x, y, res, xerr=None, yerr=None, reserr=None, xlabel="",
     #hgap = 0
     #ax_width = 1-left_offset - right_offset
     #ax_height = (1-top_offset - bottom_offset - hgap)/2
-    
 
     left, width = 0.1, 0.65
     bottom, height = 0.1, 0.65
