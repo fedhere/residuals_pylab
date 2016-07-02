@@ -9,7 +9,7 @@ import pylab as pl
 
 def plotwresids(x, y, res, xerr=None, yerr=None, reserr=None, xlabel="",
                 ylabel="", reslabel="residuals", xlim=None, ylim=None,
-                color=['k'], alpha=[1], marker=['o'], scatter=True,
+                color='k', alpha=1, marker='o', scatter=True,
                 live=False, fig=None, legend=None, loc=1):
 
     if live:
@@ -67,13 +67,12 @@ def plotwresids(x, y, res, xerr=None, yerr=None, reserr=None, xlabel="",
         if yerr:
             yerr = [yerr]
 
-    if len(alpha) < len(x):
-        alpha = alpha * len(x)
-    if len(color) < len(x):
-        color = color * len(x)
-    if len(marker) < len(x):
-        marker = marker * len(x)
-
+    if isinstance(alpha, int):
+        alpha = [alpha] * len(x)
+    if isinstance(color, int):
+        color = [color] * len(x)
+    if isinstance(marker, str):
+        marker = [marker] * len(x)
     for i in range(len(x)):
         label = ''
         if isinstance(legend, str):
